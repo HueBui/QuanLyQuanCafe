@@ -13,4 +13,10 @@ public interface INguyenLieuDAO {
     boolean updateQuantity(Double quantity, Long id);
 
     List<SanPhamNguyenLieuCongThucCustom> listKhoiLuong(Integer idSanPham);
+
+    void delete(Long id);
+
+    Long saveInforNguyenLieu(NguyenLieuModel nguyenLieuModel);
+
+    NguyenLieuModel findOne(Long id);
 }

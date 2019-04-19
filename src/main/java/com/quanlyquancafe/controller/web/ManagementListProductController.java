@@ -25,6 +25,8 @@ public class ManagementListProductController extends HttpServlet {
         Long idTable = Long.parseLong(request.getParameter("idTable"));
         List<BookingSanPhamBanCustom> bookingSanPhamTable = bookingService.listDetailBooking(idTable);
         request.setAttribute("bookingSanPhamTable", bookingSanPhamTable);
+        Double tongTien = bookingService.tongSanPham(idTable);
+        request.setAttribute("tongTien", tongTien);
         RequestDispatcher rd = request.getRequestDispatcher("/views/web/management-list.jsp");
         rd.forward(request, response);
     }

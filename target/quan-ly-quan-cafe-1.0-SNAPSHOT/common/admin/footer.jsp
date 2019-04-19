@@ -17,4 +17,6 @@
             &copy; <script>document.write(new Date().getFullYear())</script>, made with <i class="fa fa-heart heart"></i> by <a href='<c:url value="/admin-home"/> '>Bui Van Hue</a>
         </div>
     </div>
+    <script src="/template/web/assets/js/extends.js"></script>
+
 </footer>

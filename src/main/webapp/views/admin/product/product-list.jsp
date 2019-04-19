@@ -18,14 +18,13 @@
                         <p class="category">Danh sách nguyên liệu</p>
                     </div>
                     <div class="header">
-                        <a class="ti-trash" href="#"> Thêm</a>
-                        <a class="ti-trash" href="#"> Sửa</a>
-                        <a class="ti-pencil" href="#"> Xóa</a>
+                        <button class="ti-trash" id="btnDeleteNguyenLieu" disabled >Xóa</button>
+                        <a class="ti-pencil" href="<c:url value="/admin-edit-nguyen-lieu?action=edit"/>"> Thêm mới</a>
                     </div>
                     <div class="content table-responsive table-full-width">
                         <table class="table table-striped">
                             <thead>
-                            <th><input type="checkbox"></th>
+                            <th><input type="checkbox" id="checkAll"></th>
                             <th>STT</th>
                             <th>Tên Nguyên Liệu</th>
                             <th>Số Lượng</th>
@@ -37,7 +36,7 @@
                             <tbody>
                             <c:forEach var="n" items="${nguyenLieuModels}">
                                 <tr>
-                                    <td><input type="checkbox"></td>
+                                    <td><input type="checkbox" id="checkbox_${n.id}" value="${n.id}"></td>
                                     <td>${n.id}</td>
                                     <td>${n.name}</td>
                                     <td>${n.quantity}</td>
@@ -45,6 +44,7 @@
                                     <td>${n.ngayNhap}</td>
                                     <td>${n.price}</td>
                                     <td>
+                                        <a class="ti-pencil" href="<c:url value="/admin-edit-nguyen-lieu?action=edit&nguyenLieuId=${n.id}"/>"> Sửa </a>
                                         <a class="ti-eye" href="#">Xem Trước</a>
                                     </td>
                                 </tr>

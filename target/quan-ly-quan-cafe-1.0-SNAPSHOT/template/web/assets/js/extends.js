@@ -20,9 +20,11 @@ function order(idSanPham, idTable) {
 
     });
 }
-$('#buttom').click(function(){
-    alert_success('1 cais gi day',3000)
-})
+
+// $('#buttom').click(function(){
+//     alert_success('1 cais gi day',3000)
+// })
+
 function alert_success(mes,time){
     $.toast({
         heading: 'Action success',
@@ -52,8 +54,9 @@ function alert_fail(mes,time) {
 enableOrDisableDeleteAllUser();
 autoCheckBoxChild();
 autoCheckBoxParent();
+enableOrDisableDeleteAllNguyenLieu();
 
-//Xóa
+//Xóa user
 $('#btnDeleteUser').click(function (e) {
     var kqXoa=confirm("Bạn có chắc muốn xóa không?");
     e.preventDefault();
@@ -82,6 +85,84 @@ $('#btnDeleteUser').click(function (e) {
         return false;
     }
 });
+
+
+
+//Xóa nguyên liệu
+
+$('#btnDeleteNguyenLieu').click(function (e) {
+    var kqXoa=confirm("Bạn có chắc muốn xóa không?");
+    e.preventDefault();
+    if(kqXoa==true){
+        var dataArray = $(' tbody input[type=checkbox]:checked').map(function () {
+            return $(this).val();
+        }).get();
+        var data = {};
+        data["ids"] = dataArray;
+        $.ajax({
+            url: '/admin-list-nguyen-lieu',
+            type: 'DELETE',
+            contentType: 'application/json',
+            data: JSON.stringify(data),
+            dataType: 'json',
+            success: function (result) {
+                window.location.href = "/admin-list-nguyen-lieu?action=list&msg=xoathanhcong";
+            },
+            error: function (error) {
+                console.log("that bai");
+                window.location.href = "/admin-list-nguyen-lieu?action=list&msg=xoathatbai";
+            }
+        });
+    }
+    else {
+        return false;
+    }
+});
+
+//thanh toán
+$('#btnThanhToan').click(function (e) {
+    var kqThanhToan=confirm("Bạn có chắc thanh toán không?");
+    e.preventDefault();
+    if(kqThanhToan==true){
+        var dataArray = $(' tbody input[type=checkbox]:checked').map(function () {
+            return $(this).val();
+        }).get();
+        var data = {};
+        data["ids"] = dataArray;
+        $.ajax({
+            url: '/booking-detail',
+            type: 'POST',
+            contentType: 'application/json',
+            data: JSON.stringify(data),
+            dataType: 'json',
+            success: function (result) {
+                alert("Thanh toan thanh cong")
+                // window.location.href = "/management";
+            },
+            error: function (error) {
+                console.log("that bai");
+                // window.location.href = "/management";
+            }
+        });
+    }
+    else {
+        return false;
+    }
+});
+
+function enableOrDisableDeleteAllNguyenLieu() {
+    $('input[type=checkbox]').click(function () {
+        if ($('input[type=checkbox]:checked').length > 0) {
+            $('#btnDeleteNguyenLieu').prop('disabled', false);
+            $('#btnDeleteNguyenLieu').css("background-color", "#E8E8E8");
+        } else {
+            $('#btnDeleteNguyenLieu').prop('disabled', true);
+            $('#btnDeleteNguyenLieu').css("background-color", "");
+        }
+    });
+}
+
+
 function enableOrDisableDeleteAllUser() {
     $('input[type=checkbox]').click(function () {
         if ($('input[type=checkbox]:checked').length > 0) {
@@ -98,10 +179,9 @@ function autoCheckBoxChild() {
         if ((this).checked) {
             $(this).closest('table').find('tbody input[type=checkbox]').prop('checked', true);
         } else {
-            $(this).closest('table').find('tbody input[type=checkbox]').prop('checked', false);
+            $ (this).closest('table').find('tbody input[type=checkbox]').prop('checked', false);
             $('#btnDeleteUser').prop('disabled', true);
-            $('#btnSua').prop('disabled', true);
-            $('#btnDeleteLession').prop('disabled', true);
+            $('#btnDeleteNguyenLieu').prop('disabled', true);
         }
     });
 }

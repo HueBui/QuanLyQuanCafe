@@ -10,7 +10,7 @@ public class BookingSanPhamBanCustom {
     public BookingSanPhamBanCustom() {
     }
 
-    public BookingSanPhamBanCustom(Long id, String tenSp,String tenBan, Integer soLuong, Double gia) {
+    public BookingSanPhamBanCustom(Long id, String tenSp, String tenBan, Integer soLuong, Double gia) {
         this.id = id;
         this.tenSp = tenSp;
         this.tenBan = tenBan;
@@ -20,7 +20,7 @@ public class BookingSanPhamBanCustom {
 
     @Override
     public String toString() {
-        return "BookingSanPhamBanModel{" +
+        return "BookingSanPhamBanCustom{" +
                 "id=" + id +
                 ", tenSp='" + tenSp + '\'' +
                 ", tenBan='" + tenBan + '\'' +
@@ -28,6 +28,7 @@ public class BookingSanPhamBanCustom {
                 ", gia=" + gia +
                 '}';
     }
+
 
     public Long getId() {
         return id;

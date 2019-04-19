@@ -42,4 +42,24 @@ public class NguyenLieuDAO extends AbstractDAO<NguyenLieuModel> implements INguy
 
         return listKhoiLuong;
     }
+
+    @Override
+    public void delete(Long id) {
+        String sql = "DELETE FROM nguyenlieu WHERE id = ?";
+        update(sql,id);
+    }
+
+    @Override
+    public Long saveInforNguyenLieu(NguyenLieuModel nguyenLieuModel) {
+        String sql = "INSERT INTO nguyenlieu (name,quantity,image,price,ngaynhap)"+
+                " VALUES('"+ nguyenLieuModel.getName()+"', '"+nguyenLieuModel.getQuantity()+"', '"+nguyenLieuModel.getImage()+"', '"+nguyenLieuModel.getPrice()+"', '"+nguyenLieuModel.getNgayNhap()+"')";
+        return insert(sql);
+    }
+
+    @Override
+    public NguyenLieuModel findOne(Long id) {
+        String sql = "SELECT * FROM nguyenlieu WHERE id = ?";
+        List<NguyenLieuModel> nguyenLieuModels = query(sql, new NguyenLieuMapper(), id);
+        return nguyenLieuModels.isEmpty() ? null : nguyenLieuModels.get(0);
+    }
 }

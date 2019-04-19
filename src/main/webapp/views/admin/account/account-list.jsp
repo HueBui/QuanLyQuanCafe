@@ -8,6 +8,7 @@
     <title>Quản lý nhân viên</title>
 </head>
 <body>
+<%--<span style="color: red; font-size: 25px;margin-left: 10px">${msg}</span>--%>
 <div class="content">
     <div class="container-fluid">
         <div class="row">
@@ -22,9 +23,9 @@
                         <a class="ti-pencil" href='<c:url value="/admin-edit-account?action=edit"/>'> Thêm mới</a>
                     </div>
                     <div class="content table-responsive table-full-width">
-                        <table class="table table-striped">
+                        <table class="table table-striped" border="0">
                             <thead>
-                            <th><input type="checkbox"></th>
+                            <th><input type="checkbox" id="checkAll"></th>
                             <th>ID</th>
                             <th>Họ Tên</th>
                             <th>Email</th>
@@ -37,7 +38,7 @@
                             </thead>
                             <tbody>
                             <c:forEach var="u" items="${userModel}">
-                                <tr>
+                                <tr id="tr_${u.id}">
                                     <td><input type="checkbox" id="checkbox_${u.id}" value="${u.id}"></td>
                                     <td>${u.id}</td>
                                     <td>${u.fullName}</td>
@@ -48,14 +49,13 @@
                                     <td>${u.address}</td>
                                     <td>${u.image}</td>
                                     <td>
-                                        <a class="ti-eye" href="#"> Xem Trang Cá Nhân</a>
+                                        <%--<a class="ti-eye" href="#"> Xem Trang Cá Nhân</a>--%>
                                         <a class="ti-pencil" href="<c:url value="/admin-edit-account?action=edit&userId=${u.id}"/>"> Sửa </a>
                                     </td>
                                 </tr>
                             </c:forEach>
                             </tbody>
                         </table>
-
                     </div>
                 </div>
             </div>

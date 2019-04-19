@@ -29,6 +29,7 @@
         <!-- .row end -->
     </div>
     <script src="/template/web/assets/thuvien/js/jquery.toast.js"></script>
+
     <script src="/template/web/assets/js/extends.js"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.2.2/jquery.form.js"></script>

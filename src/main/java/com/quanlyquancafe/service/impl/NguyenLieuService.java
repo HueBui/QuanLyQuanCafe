@@ -23,4 +23,23 @@ public class NguyenLieuService implements INguyenLieuService {
     public boolean update(NguyenLieuModel nguyenLieuModel) {
         return iNguyenLieuDAO.update(nguyenLieuModel);
     }
+
+    @Override
+    public void delete(long[] ids){
+        for (long id : ids) {
+            iNguyenLieuDAO.delete(id);
+        }
+    }
+
+    @Override
+    public Long saveInforNguyenLieu(NguyenLieuModel nguyenLieuModel) {
+        Long userID=iNguyenLieuDAO.saveInforNguyenLieu(nguyenLieuModel);
+        return userID;
+    }
+
+    @Override
+    public NguyenLieuModel findOne(long id) {
+        NguyenLieuModel model=iNguyenLieuDAO.findOne(id);
+        return model;
+    }
 }

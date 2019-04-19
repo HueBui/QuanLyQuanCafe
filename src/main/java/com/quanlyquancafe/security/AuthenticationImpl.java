@@ -18,6 +18,7 @@ public class AuthenticationImpl implements AuthenticationFilter {
         this.pass = pass;
         userService = new UserService();
     }
+
     @Override
     public String urlRedirect(HttpServletRequest request) {
 
@@ -25,10 +26,12 @@ public class AuthenticationImpl implements AuthenticationFilter {
         if (model != null) {
             SessionUtil.getInstance().putValue(request, "USERMODEL", model);
             if (model.getRole().getCode().equals("ORDER")) {
-                return "/admin-home";
+                return "/order";
             } else if (model.getRole().getCode().equals("ADMIN")) {
                 return "/admin-home";
             }
+        } else if (model.getRole().getCode().equals("QUAY")) {
+            return "/management";
         } else {
             return "/dang-nhap?action=loginFalse";
         }

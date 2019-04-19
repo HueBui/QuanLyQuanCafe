@@ -53,6 +53,18 @@ public class BookingService implements IBookingService {
     @Override
     public List<BookingSanPhamBanCustom> listDetailBooking(Long idBan) {
         BillDetailDAO billDetailDAO = new BillDetailDAO();
-        return billDetailDAO.detailBill(idBan);
+        List<BookingSanPhamBanCustom> list = billDetailDAO.detailBill(idBan);
+        return list;
     }
+
+    public Double tongSanPham(Long idBan) {
+        BillDetailDAO billDetailDAO = new BillDetailDAO();
+        List<BookingSanPhamBanCustom> list = billDetailDAO.detailBill(idBan);
+        Double tong = 0.0;
+        for (int i = 0; i < list.size(); i++) {
+            tong += list.get(i).getSoLuong() * list.get(i).getGia();
+        }
+        return tong;
+    }
+
 }
