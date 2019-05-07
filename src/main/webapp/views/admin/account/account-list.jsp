@@ -47,7 +47,10 @@
                                     <td>${u.phone}</td>
                                     <td>${u.cmtnd}</td>
                                     <td>${u.address}</td>
-                                    <td>${u.image}</td>
+                                    <td><c:set var="image" value="/repository/${u.image}"/>
+                                    <img src="${image}" id="viewImage" width="70px"
+                                         height="70px">
+                                    </td>
                                     <td>
                                         <%--<a class="ti-eye" href="#"> Xem Trang Cá Nhân</a>--%>
                                         <a class="ti-pencil" href="<c:url value="/admin-edit-account?action=edit&userId=${u.id}"/>"> Sửa </a>

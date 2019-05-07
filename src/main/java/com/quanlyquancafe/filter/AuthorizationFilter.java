@@ -28,11 +28,10 @@ public class AuthorizationFilter implements Filter {
                 if (model.getRole().getCode().equals(SystemConstant.ADMIN)) {
                     filterChain.doFilter(servletRequest, servletResponse);
                 } else if (model.getRole().getCode().equals(SystemConstant.ORDER)) {
-
-                    response.sendRedirect(request.getContextPath()+"/login");
+                    response.sendRedirect(request.getContextPath()+"/login?action=login");
                 }
             } else {
-                response.sendRedirect(request.getContextPath()+"/login");
+                response.sendRedirect(request.getContextPath()+"/login?action=login");
             }
         } else {
             filterChain.doFilter(servletRequest, servletResponse);

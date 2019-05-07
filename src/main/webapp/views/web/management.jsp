@@ -27,11 +27,19 @@
             <div class="row clearfix">
                 <!-- .row end -->
                 <div class="row">
-                    <c:forEach var="bt" items="${bookingTable}">
+                    <c:forEach var="tl" items="${tableModels}">
+
                         <!-- Home #1 -->
                         <div class="col-xs-12 col-sm-6 col-md-4 portfolio-item">
-                            <a href="<c:url value="/management-product?idTable=${bt.idTable}"/>">
-                                <div class="portfolio-item-box">
+                            <a href="<c:url value="/management-product?idTable=${tl.id}"/>">
+                                <div <c:if test="${tl.status==1}">
+                                    style="background-color: red"
+                                </c:if>
+                                        <c:if test="${tl.status==0}">
+                                            class="portfolio-item-box"
+                                        </c:if>
+
+                                >
                                     <div class="portfolio-img">
                                         <img src="template/web/assets/images/landing/images.png" alt="Home Page"
                                              width="100%">
@@ -40,7 +48,7 @@
                                     <div class="portfolio-bio">
                                         <div class="portfolio-meta">
                                             <div class="portfolio-title">
-                                                <h4>${bt.nameTable}</h4>
+                                                <h4>${tl.name}</h4>
                                             </div>
                                         </div>
                                         <!-- .Portfolio-meta end -->
@@ -50,6 +58,8 @@
                                 <!-- .portfolio-item end -->
                             </a>
                         </div>
+
+
                     </c:forEach>
                     <!-- .portfolio-item  end -->
                 </div>

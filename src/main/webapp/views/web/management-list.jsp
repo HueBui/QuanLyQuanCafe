@@ -13,34 +13,41 @@
         <table class="table table-striped" border="1">
             <thead>
             <tr>
-                <th><input type="checkbox" id="checkAll"></th>
+                <th scope="col" style="text-align: center">STT</th>
                 <th scope="col" style="text-align: center">Tên Sản Phẩm</th>
                 <th scope="col" style="text-align: center">Số Lượng</th>
-                <th scope="col" style="text-align: center">Giá</th>
+                <th scope="col" style="text-align: center">Đơn Giá</th>
+                <th scope="col" style="text-align: center">Tổng Tiền</th>
 
             </tr>
             </thead>
             <tbody>
-            <c:forEach var="bst" items="${bookingSanPhamTable}">
+            <c:forEach var="bst" items="${bookingSanPhamTable}" varStatus="loop">
 
                 <tr>
-                    <th><input type="checkbox" id="checkbox_${bts.id}" value="${bts.id}"></th>
+                    <th style="text-align: center">${loop.index+1}</th>
                     </th>
-                    <td style="text-align: center">${bst.tenSp}</td>
+                    <td>${bst.tenSp}</td>
                     <td style="text-align: center">${bst.soLuong}</td>
                     <td style="text-align: center">${bst.gia}</td>
+                    <td style="text-align: center">${bst.gia * bst.soLuong}</td>
                 </tr>
-                <input type="hidden" value="${idTable}" name="idTable">
+                <input type="hidden" value="${idTable}" name="idTable" id="tableId">
+                <input type="hidden" value="${bst.id}" id="idbooking"></input>
             </c:forEach>
             </tbody>
             <tr>
                 <td></td>
                 <td></td>
-                <td>Tổng:</td>
-                <td>${tongTien}</td>
+                <td></td>
+                <td align="center">Tổng:</td>
+                <td align="center" >${tongTien}</td>
+                <input type="hidden" id="totalPrice" value="${tongTien}"/>
+
             </tr>
         </table>
         <button type="button" class="btn btn-success" id="btnThanhToan">Thanh Toán</button>
+
     </div>
 </section>
 </body>

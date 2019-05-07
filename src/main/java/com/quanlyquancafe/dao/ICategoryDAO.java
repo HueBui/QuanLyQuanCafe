@@ -7,4 +7,10 @@ import java.util.List;
 public interface ICategoryDAO {
     List<CategoryModel> getAll();
 
+    Long save(CategoryModel categoryModel);
+    CategoryModel findOne(Long id);
+
+    boolean update(CategoryModel categoryModel);
+
+    void delete(Long id);
 }

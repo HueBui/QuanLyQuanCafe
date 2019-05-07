@@ -6,4 +6,6 @@ import java.util.List;
 
 public interface IManagementService {
     List<BookingTableCustom> getTable();
+
+
 }

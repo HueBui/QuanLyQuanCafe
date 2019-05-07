@@ -16,5 +16,32 @@ public class CategoryDAO extends AbstractDAO<CategoryModel> implements ICategory
         return getAll;
     }
 
+    @Override
+    public Long save(CategoryModel categoryModel) {
+        String sql = "INSERT INTO category (type,image)"+
+                " VALUES('"+ categoryModel.getType()+"', '"+categoryModel.getImage()+"')";
+        return insert(sql);
+    }
+
+    @Override
+    public CategoryModel findOne(Long id) {
+        String sql = "SELECT * FROM category WHERE id = ?";
+        List<CategoryModel> userModels = query(sql, new CategoryMapper(), id);
+        return userModels.isEmpty() ? null : userModels.get(0);
+    }
+
+    @Override
+    public boolean update(CategoryModel categoryModel) {
+        StringBuilder sql = new StringBuilder("UPDATE category SET type = ?, image = ?,");
+        sql.append(" WHERE id = ?");
+
+        return update(sql.toString(), categoryModel.getType(), categoryModel.getImage());
+    }
+
+    @Override
+    public void delete(Long id) {
+        String sql = "DELETE FROM category WHERE id = ?";
+        update(sql,id);
+    }
 
 }

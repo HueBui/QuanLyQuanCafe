@@ -18,9 +18,8 @@
                         <p class="category">Danh sách table</p>
                     </div>
                     <div class="header">
-                        <a class="ti-pencil" href="#"> Thêm</a>
-                        <a class="ti-trash" href="#"> Sửa</a>
-                        <a class="ti-pencil" href="#"> Xóa</a>
+                        <a class="ti-pencil" href="<c:url value="/admin-edit-table?action=edit"/>"> Thêm</a>
+                        <button class="ti-trash" id="btnDeleteTable" disabled >Xóa</button>
                     </div>
                     <div class="content table-responsive table-full-width">
                         <table class="table table-striped">
@@ -41,13 +40,18 @@
                                     <td><input type="checkbox"></td>
                                     <td>${tbl.id}</td>
                                     <td>${tbl.name}</td>
-                                    <td>${tbl.image}</td>
+                                    <td><c:set var="image" value="/repository/${tbl.image}"/>
+                                        <img src="${image}" id="viewImage" width="70px"
+                                             height="70px">
+                                    </td>
                                     <td>${tbl.typeTable}</td>
                                     <td>${tbl.soLuongGhe}</td>
                                     <td>${tbl.status}</td>
                                     <td>${tbl.ghiChu}</td>
                                     <td>
-                                        <a class="ti-eye" href="#">Xem Trước</a>
+                                        <a class="ti-pencil" href="<c:url value="/admin-edit-table?action=edit&id=${tbl.id}"/>"> Sửa </a>
+                                        <%--<a class="ti-eye" href="#">Xem Trước</a>--%>
+
                                     </td>
                                 </tr>
                             </c:forEach>

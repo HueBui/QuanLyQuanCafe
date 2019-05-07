@@ -10,7 +10,6 @@ public class ManagementService implements IManagementService {
     @Override
     public List<BookingTableCustom> getTable() {
         TableDAO dao = new TableDAO();
-
         return dao.getTable();
     }
 }

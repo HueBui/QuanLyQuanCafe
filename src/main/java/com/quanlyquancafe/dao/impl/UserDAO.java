@@ -59,10 +59,10 @@ public class UserDAO extends AbstractDAO<UserModel> implements IUserDAO {
     @Override
     public boolean update(UserModel userModelUpdate) {
         StringBuilder sql = new StringBuilder("UPDATE user SET username = ?, fullname = ?,");
-        sql.append(" password = ?, modifieddate = ?, modifiedby = ? WHERE id = ?");
+        sql.append(" password = ?, modifieddate = ?, modifiedby = ? , image=? WHERE id = ?");
 
         return update(sql.toString(), userModelUpdate.getUserName(), userModelUpdate.getFullName(), userModelUpdate.getPassword(),
-                userModelUpdate.getModifiedDate(), userModelUpdate.getModifiedBy(),userModelUpdate.getId());
+                userModelUpdate.getModifiedDate(), userModelUpdate.getModifiedBy(),userModelUpdate.getImage(),userModelUpdate.getId());
 
     }
 

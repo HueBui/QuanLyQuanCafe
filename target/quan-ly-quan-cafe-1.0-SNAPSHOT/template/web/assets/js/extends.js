@@ -55,6 +55,7 @@ enableOrDisableDeleteAllUser();
 autoCheckBoxChild();
 autoCheckBoxParent();
 enableOrDisableDeleteAllNguyenLieu();
+enableOrDisableDeleteAllMenu();
 
 //Xóa user
 $('#btnDeleteUser').click(function (e) {
@@ -85,8 +86,6 @@ $('#btnDeleteUser').click(function (e) {
         return false;
     }
 });
-
-
 
 //Xóa nguyên liệu
 
@@ -119,30 +118,91 @@ $('#btnDeleteNguyenLieu').click(function (e) {
     }
 });
 
-//thanh toán
-$('#btnThanhToan').click(function (e) {
-    var kqThanhToan=confirm("Bạn có chắc thanh toán không?");
+$('#btnDeleteMenu').click(function (e) {
+    var kqXoa=confirm("Bạn có chắc muốn xóa không?");
     e.preventDefault();
-    if(kqThanhToan==true){
+    if(kqXoa==true){
         var dataArray = $(' tbody input[type=checkbox]:checked').map(function () {
             return $(this).val();
         }).get();
         var data = {};
         data["ids"] = dataArray;
         $.ajax({
-            url: '/booking-detail',
-            type: 'POST',
+            url: '/admin-list-menu',
+            type: 'DELETE',
             contentType: 'application/json',
             data: JSON.stringify(data),
             dataType: 'json',
             success: function (result) {
-                alert("Thanh toan thanh cong")
-                // window.location.href = "/management";
+                window.location.href = "/admin-list-menu?action=list&msg=xoathanhcong";
             },
             error: function (error) {
-                console.log("that bai");
-                // window.location.href = "/management";
+                console.log("That bai");
+                window.location.href = "/admin-list-menu?action=list&msg=xoathatbai";
             }
+        });
+    }
+    else {
+        return false;
+    }
+});
+
+$('#btnDeleteTable').click(function (e) {
+    var kqXoa=confirm("Bạn có chắc muốn xóa không?");
+    e.preventDefault();
+    if(kqXoa==true){
+        var dataArray = $(' tbody input[type=checkbox]:checked').map(function () {
+            return $(this).val();
+        }).get();
+        var data = {};
+        data["ids"] = dataArray;
+        $.ajax({
+            url: '/admin-edit-table',
+            type: 'DELETE',
+            contentType: 'application/json',
+            data: JSON.stringify(data),
+            dataType: 'json',
+            success: function (result) {
+                window.location.href = "/admin-edit-table?action=list&msg=xoathanhcong";
+            },
+            error: function (error) {
+                console.log("That bai");
+                window.location.href = "/admin-edit-table?action=list&msg=xoathatbai";
+            }
+        });
+    }
+    else {
+        return false;
+    }
+});
+
+//thanh toán
+$('#btnThanhToan').click(function (e) {
+    var kqThanhToan=confirm("Bạn có chắc thanh toán không?");
+    e.preventDefault();
+    if(kqThanhToan==true){
+
+        var idTable1 = document.getElementById("tableId").value;
+        var idBooking1 = document.getElementById("idbooking").value;
+        var totalPrice = document.getElementById("totalPrice").value;
+        var data = [idTable1, idBooking1,totalPrice];
+
+        $.ajax({
+            url:"/booking-detail",
+            type:"POST",
+            dataType:'json',
+            data: {json:data},
+            success:function(data){
+                alert(data);
+                $("#output").append( data );
+                window.location.href = "/management";
+            },
+            error: function() {
+                console.log('fail');   // doesn't print....
+                console.log(typeof data); // prints 'undefined'
+                $("#output").append('fail');
+            }
+
         });
     }
     else {
@@ -174,6 +234,18 @@ function enableOrDisableDeleteAllUser() {
         }
     });
 }
+
+function enableOrDisableDeleteAllMenu() {
+    $('input[type=checkbox]').click(function () {
+        if ($('input[type=checkbox]:checked').length > 0) {
+            $('#btnDeleteMenu').prop('disabled', false);
+            $('#btnDeleteUser').css("background-color", "#E8E8E8");
+        } else {
+            $('#btnDeleteMenu').prop('disabled', true);
+            $('#btnDeleteMenu').css("background-color", "");
+        }
+    });
+}
 function autoCheckBoxChild() {
     $('#checkAll').change(function () {
         if ((this).checked) {
@@ -197,5 +269,38 @@ function autoCheckBoxParent() {
                 $('#checkAll').prop('checked', false);
             }
         });
+    });
+}
+
+
+//upload anh
+$('#uploadImage').change(function () {
+    var dataArray = {};
+    var files = $(this)[0].files[0];
+    if (files != undefined) {
+        var reader = new FileReader();
+        reader.onload = function (e) {
+            dataArray["base64"] = e.target.result;
+            dataArray["name"] = files.name;
+            uploadFile(dataArray);
+        };
+        reader.readAsDataURL(files);
+    }
+});
+
+function uploadFile(data) {
+    $.ajax({
+        url: '/upload-file',
+        type: 'POST',
+        data: JSON.stringify(data),
+        contentType: 'application/json',
+        success: function (res) {
+            console.log(res);
+            $('#kq-upload').html("<label style='color: blue'>Up thành công</label>");
+        },
+        error: function (res) {
+            console.log(res);
+            $('#kq-upload').html("<label style='color: red'>Up thất bại</label>");
+        }
     });
 }

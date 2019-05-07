@@ -11,7 +11,7 @@ public class BookingSanPhamBanMapper implements RowMapper<BookingSanPhamBanCusto
         BookingSanPhamBanCustom maper = new BookingSanPhamBanCustom();
         try {
             maper.setId(resultSet.getLong("id"));
-            maper.setSoLuong(resultSet.getInt("soluong"));
+            maper.setSoLuong(resultSet.getInt("quantity"));
             maper.setTenBan(resultSet.getString("name"));
             maper.setTenSp(resultSet.getString("tensp"));
             maper.setGia(resultSet.getDouble("gia"));

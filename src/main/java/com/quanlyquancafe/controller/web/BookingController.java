@@ -1,8 +1,10 @@
 package com.quanlyquancafe.controller.web;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.quanlyquancafe.model.BookingDetailModel;
 import com.quanlyquancafe.model.BookingModel;
 import com.quanlyquancafe.service.impl.BookingService;
+import com.quanlyquancafe.service.impl.TableService;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -19,28 +21,56 @@ import java.util.List;
 public class BookingController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         BookingService bookingService = new BookingService();
-        BookingModel bookingModel = new BookingModel();
+        BookingDetailModel bookingDetailModel = new BookingDetailModel();
+        TableService tableService = new TableService();
 
-        List<Integer> listData = new ArrayList<>();
+        List<Long> listData = new ArrayList<>();
         String[] myJsonData = request.getParameterValues("json[]");
 
         for (int i = 0; i < myJsonData.length; ++i) {
-            Integer phanTu = Integer.parseInt(myJsonData[i]);
+            Long phanTu = Long.valueOf(Integer.parseInt(myJsonData[i]));
             listData.add(phanTu);
         }
-            bookingModel.setIdTable(listData.get(0));
-            bookingModel.setIdSanPham(listData.get(1));
-            bookingModel.setSoLuong(listData.get(2));
+        Long resultSaveBooking;
+        List<BookingModel> listCheck = bookingService.getIdBooking(listData.get(0));
+        if (listCheck.size() == 0){
+            BookingModel bookingModel = new BookingModel();
+            bookingModel.setCreateTime(new Timestamp(System.currentTimeMillis()));
+            bookingModel.setCreateBy(1l);
+            bookingModel.setTotalPrice(0.0);
+            bookingModel.setStatus(1);
+            resultSaveBooking = bookingService.saveBooking(bookingModel);
+        }
+        else {
+            resultSaveBooking = listCheck.get(0).getId();
+        }
 
-        bookingModel.setDate(new Timestamp(System.currentTimeMillis()));
-        bookingModel.setStatus(0);
-        bookingModel.setIdUser(1);
+        bookingDetailModel.setIdTable(listData.get(0));
+        bookingDetailModel.setIdSanPham(listData.get(1));
+        bookingDetailModel.setSoLuong(Math.toIntExact(listData.get(2)));
+        bookingDetailModel.setIdBooking(resultSaveBooking);
+        bookingDetailModel.setGia(0);
+        bookingDetailModel.setCreateBy(1L);
+        bookingDetailModel.setCreateTime(new Timestamp(System.currentTimeMillis()));
 
-        Long result = bookingService.save(bookingModel);
+        List<BookingDetailModel> detailModelList = bookingService.getBookingDetailByIdBooking(resultSaveBooking);
+        Long resultSaveBookingDetail = null;
+        Long idSanPham = null;
+        if (listCheck.size()!=0){
+            idSanPham = detailModelList.get(0).getIdSanPham();
+        }
+
+        if(bookingDetailModel.getIdSanPham().equals(idSanPham)){
+            resultSaveBookingDetail = bookingService.updateQuantityBookingDetail(Math.toIntExact(listData.get(2)),detailModelList.get(0).getIdSanPham(),resultSaveBooking,bookingDetailModel);
+        }else{
+             resultSaveBookingDetail = bookingService.saveBookingDetail(bookingDetailModel);
+             tableService.updateStatusTable(listData.get(0),1);
+        }
+
         ObjectMapper mapper = new ObjectMapper();
-        if (result !=1){
-            mapper.writeValue(response.getOutputStream(), "Sản Phẩm Yêu Cầu Lớn. Hiện tại còn: "+result);
-        }else {
+        if (resultSaveBookingDetail != -1) {
+            mapper.writeValue(response.getOutputStream(), "Sản Phẩm Yêu Cầu Lớn. Hiện tại còn: " + resultSaveBookingDetail);
+        } else {
             mapper.writeValue(response.getOutputStream(), "Thêm Thành Công");
         }
 

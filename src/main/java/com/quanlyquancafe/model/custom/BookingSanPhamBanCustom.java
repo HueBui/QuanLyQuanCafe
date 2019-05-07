@@ -7,6 +7,16 @@ public class BookingSanPhamBanCustom {
     private Integer soLuong;
     private Double gia;
 
+    private  Long idTable;
+
+    public Long getIdTable() {
+        return idTable;
+    }
+
+    public void setIdTable(Long idTable) {
+        this.idTable = idTable;
+    }
+
     public BookingSanPhamBanCustom() {
     }
 

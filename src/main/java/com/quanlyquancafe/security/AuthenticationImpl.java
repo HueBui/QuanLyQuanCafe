@@ -29,12 +29,11 @@ public class AuthenticationImpl implements AuthenticationFilter {
                 return "/order";
             } else if (model.getRole().getCode().equals("ADMIN")) {
                 return "/admin-home";
+            } else {
+                return "/management";
             }
-        } else if (model.getRole().getCode().equals("QUAY")) {
-            return "/management";
         } else {
             return "/dang-nhap?action=loginFalse";
         }
-        return null;
     }
 }

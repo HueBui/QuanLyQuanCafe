@@ -2,70 +2,38 @@ package com.quanlyquancafe.model;
 
 import java.sql.Timestamp;
 
-public class BookingModel  {
-    private Long id;
-    private Integer idUser;
-    private Integer idSanPham;
+public class BookingModel extends AbstractModel<BookingModel> {
+    private Double totalPrice;
     private Integer status;
-    private Integer idTable;
-    private Timestamp date;
-    private Integer soLuong;
+    private Timestamp createTime;
+    private Long createBy;
+
     public BookingModel() {
     }
 
-    public BookingModel(Long id, Integer idUser, Integer idSanPham, Integer status, Integer idTable, Timestamp date,Integer soLuong) {
-        this.id = id;
-        this.idUser = idUser;
-        this.idSanPham = idSanPham;
+    public BookingModel(Double totalPrice, Integer status, Timestamp createTime, Long createBy) {
+        this.totalPrice = totalPrice;
         this.status = status;
-        this.idTable = idTable;
-        this.date = date;
-        this.soLuong = soLuong;
-    }
-
-    public Integer getSoLuong() {
-        return soLuong;
-    }
-
-    public void setSoLuong(Integer soLuong) {
-        this.soLuong = soLuong;
+        this.createTime = createTime;
+        this.createBy = createBy;
     }
 
     @Override
     public String toString() {
         return "BookingModel{" +
-                "id=" + id +
-                ", idUser=" + idUser +
-                ", idSanPham=" + idSanPham +
+                "totalPrice=" + totalPrice +
                 ", status=" + status +
-                ", idTable=" + idTable +
-                ", date=" + date +
-                ", soLuong=" + soLuong +
+                ", createTime=" + createTime +
+                ", createBy=" + createBy +
                 '}';
     }
 
-    public Long getId() {
-        return id;
+    public Double getTotalPrice() {
+        return totalPrice;
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Integer getIdUser() {
-        return idUser;
-    }
-
-    public void setIdUser(Integer idUser) {
-        this.idUser = idUser;
-    }
-
-    public Integer getIdSanPham() {
-        return idSanPham;
-    }
-
-    public void setIdSanPham(Integer idSanPham) {
-        this.idSanPham = idSanPham;
+    public void setTotalPrice(Double totalPrice) {
+        this.totalPrice = totalPrice;
     }
 
     public Integer getStatus() {
@@ -76,19 +44,19 @@ public class BookingModel  {
         this.status = status;
     }
 
-    public Integer getIdTable() {
-        return idTable;
+    public Timestamp getCreateTime() {
+        return createTime;
     }
 
-    public void setIdTable(Integer idTable) {
-        this.idTable = idTable;
+    public void setCreateTime(Timestamp createTime) {
+        this.createTime = createTime;
     }
 
-    public Timestamp getDate() {
-        return date;
+    public Long getCreateBy() {
+        return createBy;
     }
 
-    public void setDate(Timestamp date) {
-        this.date = date;
+    public void setCreateBy(Long createBy) {
+        this.createBy = createBy;
     }
 }

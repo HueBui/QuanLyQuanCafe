@@ -1,7 +1,9 @@
 package com.quanlyquancafe.controller.web;
 
+import com.quanlyquancafe.model.TableModel;
 import com.quanlyquancafe.model.custom.BookingTableCustom;
 import com.quanlyquancafe.service.impl.ManagementService;
+import com.quanlyquancafe.service.impl.TableService;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -20,8 +22,10 @@ public class ManagementController extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         ManagementService managementService = new ManagementService();
-        List<BookingTableCustom> bookingTable = managementService.getTable();
-        request.setAttribute("bookingTable", bookingTable);
+        TableService tableService = new TableService();
+
+        List<TableModel> tableModelList = tableService.getAll();
+        request.setAttribute("tableModels", tableModelList);
         RequestDispatcher rd = request.getRequestDispatcher("/views/web/management.jsp");
         rd.forward(request, response);
     }

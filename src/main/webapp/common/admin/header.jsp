@@ -30,7 +30,7 @@
                             <b class="caret"></b>
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a href="<c:url value="/trang-chu?action=logout"/> ">Đăng Xuất</a></li>
+                            <li><a href="<c:url value="/login?action=logout"/>">Đăng Xuất</a></li>
                             <li><a href="#">Cá Nhân</a></li>
                         </ul>
                     </li>

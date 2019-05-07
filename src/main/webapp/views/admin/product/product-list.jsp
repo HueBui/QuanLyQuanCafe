@@ -1,11 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-         pageEncoding="UTF-8" %>
-<%@include file="/common/taglib.jsp" %>
+         pageEncoding="UTF-8"%>
+<%@include file="/common/taglib.jsp"%>
 <!DOCTYPE html>
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title></title>
+    <title>List menu</title>
 </head>
 <body>
 <div class="content">
@@ -14,40 +14,40 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="header">
-                        <h4 class="title">Nguyên Liệu</h4>
-                        <p class="category">Danh sách nguyên liệu</p>
+                        <h4 class="title">Sản phẩm</h4>
+                        <p class="category">Danh sách sản phẩm</p>
                     </div>
                     <div class="header">
-                        <button class="ti-trash" id="btnDeleteNguyenLieu" disabled >Xóa</button>
-                        <a class="ti-pencil" href="<c:url value="/admin-edit-nguyen-lieu?action=edit"/>"> Thêm mới</a>
+                        <a class="ti-pencil" href="<c:url value="/admin-edit-menu?action=edit"/>"> Thêm</a>
+                        <button class="ti-trash" id="btnDeleteMenu" disabled >Xóa</button>
                     </div>
                     <div class="content table-responsive table-full-width">
                         <table class="table table-striped">
                             <thead>
                             <th><input type="checkbox" id="checkAll"></th>
                             <th>STT</th>
-                            <th>Tên Nguyên Liệu</th>
-                            <th>Số Lượng</th>
-                            <th>Hình Ảnh</th>
-                            <th>Ngày nhập</th>
+                            <th>Tên Sản Phẩm</th>
+                            <th>Hình ảnh</th>
                             <th>Giá</th>
+                            <th>Thể loại</th>
                             <th class="ti-settings">Thao Tác</th>
                             </thead>
                             <tbody>
-                            <c:forEach var="n" items="${nguyenLieuModels}">
-                                <tr>
-                                    <td><input type="checkbox" id="checkbox_${n.id}" value="${n.id}"></td>
-                                    <td>${n.id}</td>
-                                    <td>${n.name}</td>
-                                    <td>${n.quantity}</td>
-                                    <td>${n.image}</td>
-                                    <td>${n.ngayNhap}</td>
-                                    <td>${n.price}</td>
-                                    <td>
-                                        <a class="ti-pencil" href="<c:url value="/admin-edit-nguyen-lieu?action=edit&nguyenLieuId=${n.id}"/>"> Sửa </a>
-                                        <a class="ti-eye" href="#">Xem Trước</a>
-                                    </td>
-                                </tr>
+                            <c:forEach var="m" items="${menuModel}">
+                            <tr>
+                                <td><input type="checkbox"></td>
+                                <td>${m.id}</td>
+                                <td>${m.tenSp}</td>
+                                <td><c:set var="image" value="/repository/${m.image}"/>
+                                <img src="${image}" id="viewImage" width="70px"
+                                height="70px">
+                                </td>
+                                <td>${m.gia}</td>
+                                <td>${m.type}</td>
+                                <td>
+                                    <a class="ti-pencil" href="<c:url value="/admin-edit-menu?action=edit&id=${m.id}"/>"> Sửa </a>
+                                </td>
+                            </tr>
                             </c:forEach>
                             </tbody>
                         </table>

@@ -5,45 +5,43 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>Quản lý nguyên liệu</title>
+    <title>Quản lý nhân viên</title>
 </head>
 <body>
 <span style="color: red">${msg}</span>
-<form action="/admin-edit-nguyen-lieu" method="post">
+<form action="/admin-edit-menu" method="post">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="form-group">
-                <label>Tên nguyên liệu</label>
-                <input type="text" name="name" class="form-control" value="${nguyenLieuModel.name}">
-            </div>
-            <div class="form-group">
-                <label>Số lượng</label>
-                <input type="text" name="soluong" class="form-control" value="${nguyenLieuModel.quantity}">
-            </div>
-
-            <div class="form-group">
-                <label>Ngày nhập</label>
-                <input id="input" width="312" name="ngayNhap" value="${nguyenLieuModel.ngayNhap}"/>
+                <label>Tên sản phẩm</label>
+                <input type="text" name="name" class="form-control" value="${menuModel.name}">
             </div>
             <div class="form-group">
                 <label>Giá</label>
-                <input type="text" name="gia" class="form-control" value="${nguyenLieuModel.price}">
+                <input type="text" name="gia" class="form-control" value="${menuModel.price}">
+            </div>
+            <div class="form-group">
+                <label>Danh mục: </label>
+                <select name="idCategory">
+                    <c:forEach var="category" items="${categoryModelList}">
+                    <option value="${category.id}" >${category.type}</option>
+                    </c:forEach>
+                </select>
             </div>
             <div class="form-group">
                 <label>Image</label>
-                <input type="file" name="image"  class="form-control" value="${nguyenLieuModel.image}">
+                <input type="file" name="image" id="uploadImage" class="form-control">
             </div>
-
             <div class="form-group">
-                <c:if test="${nguyenLieuModel==null}">
-                    <input type="hidden" name="action" value="themnguyenlieu">
+                <c:if test="${menuModel==null}">
+                    <input type="hidden" name="action" value="themsanpham">
                     <button type="submit" class="btn btn-primary">Lưu</button>
                     <a class="btn btn-danger" href="">Quay lại</a>
                     </button>
                 </c:if>
-                <c:if test="${nguyenLieuModel!=null}">
-                    <input type="hidden" name="id" value="${nguyenLieuModel.id}">
-                    <input type="hidden" name="action" value="suanguyenlieu">
+                <c:if test="${menuModel!=null}">
+                    <input type="hidden" name="id" value="${menuModel.id}">
+                    <input type="hidden" name="action" value="suasanpham">
                     <button type="submit" class="btn btn-primary">Sửa thông tin</button>
                     <a class="btn btn-danger" href="">Quay lại</a>
                     </button>
@@ -53,8 +51,4 @@
 
     </div>
 </form>
-<script>
-    $('#input').datetimepicker({ footer: true, modal: true });
-</script>
 </body>
-

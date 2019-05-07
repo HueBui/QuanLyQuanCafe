@@ -7,4 +7,5 @@ public class SystemConstant {
     public static final String ORDER = "ORDER";
     public static final String LIST = "list";
     public static final String EDIT = "edit";
+    public static final String BASE_DIR = "C:/usr/var/images";
 }

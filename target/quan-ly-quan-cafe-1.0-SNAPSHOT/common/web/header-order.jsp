@@ -17,8 +17,9 @@
             </div>
             <!-- .col-md-10 end -->
             <div class="col-xs-12 col-sm-12 col-md-8 col-md-offset-2 text-center" style="margin-top: -50px">
-                <a class="btn btn--primary btn--white-hover btn--lg" href="#">Hello Hue Bui</a>
+                <a class="btn btn--primary btn--white-hover btn--lg" href="<c:url value="/login?action=logout"/>">Hello Hue Bui</a>
             </div>
+
             <!-- .col-md-12 end -->
         </div>
         <!-- .row end -->

@@ -33,7 +33,7 @@
             <li class="${active4}">
                 <a href='<c:url value="/admin-list-menu?action=list"/> '>
                     <i class="ti-view-list-alt"></i>
-                    <p>Quản Lý Menu</p>
+                    <p>Quản Lý Sản Phẩm</p>
                 </a>
             </li>
             <li class="${active5}">
@@ -42,12 +42,12 @@
                     <p>Quản Lý Bàn</p>
                 </a>
             </li>
-            <%--<li class="${active6}">--%>
-                <%--<a href='<c:url value="#"/>'>--%>
-                    <%--<i class="ti-pencil-alt2"></i>--%>
-                    <%--<p>Thêm Bài Luyện Tập</p>--%>
-                <%--</a>--%>
-            <%--</li>--%>
+            <li class="${active6}">
+                <a href='<c:url value="/admin-list-category?action=list"/>'>
+                    <i class="ti-pencil-alt2"></i>
+                    <p>Quản Lý Danh Mục</p>
+                </a>
+            </li>
             <li class="${active7}">
                 <a href='<c:url value="/admin-home?action=nottification"/> '>
                     <i class="ti-bell"></i>

@@ -1,6 +1,6 @@
 package com.quanlyquancafe.model;
 
-public class CategoryModel {
+public class CategoryModel extends AbstractModel<CategoryModel> {
     private Long id;
     private String type;
     private String image;

@@ -26,9 +26,9 @@ public class HomeController extends HttpServlet {
             rd.forward(req, resp);
         }
         //xóa session và trả về trang chủ hoặc trang login
-        else {
+        else if (action.equals("logout")){
             SessionUtil.getInstance().removeValue(req, "USERMODEL");
-            RequestDispatcher rd = req.getRequestDispatcher("/views/web/login.jsp");
+            RequestDispatcher rd = req.getRequestDispatcher("/views/admin/admin-login.jsp");
             rd.forward(req, resp);
         }
     }

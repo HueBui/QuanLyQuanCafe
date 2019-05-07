@@ -54,7 +54,7 @@
             </div>
             <div class="form-group">
                 <label>Image</label>
-                <input type="file" name="user_img"  class="form-control" value="${userModel.image}">
+                <input type="file" name="user_img" id="uploadImage" class="form-control">
             </div>
             <div class="form-group">
                     <c:if test="${userModel==null}">
