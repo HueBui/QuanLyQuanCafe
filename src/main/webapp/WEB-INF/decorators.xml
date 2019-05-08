@@ -12,6 +12,16 @@
     <decorator name="login" page="login.jsp">
         <pattern>/login</pattern>
     </decorator>
+    <decorator name="management" page="management.jsp">
+        <pattern>/management</pattern>
+    </decorator>
+    <decorator name="total" page="management.jsp">
+        <pattern>/totalByDate</pattern>
+    </decorator>
+    <decorator name="management-product" page="management.jsp">
+        <pattern>/management-product</pattern>
+    </decorator>
+
     <decorator name="web" page="web.jsp">
         <pattern>/*</pattern>
     </decorator>

@@ -54,7 +54,7 @@ public class BookingDAO extends AbstractDAO<BookingDetailModel> implements IBook
 
     @Override
     public List<BookingModel> tinhTongTienTheoNgay(Integer idUser, String date) {
-        String sql = "SELECT * FROM quanlyquancafe.booking where date(create_time) = '" + date + "' and status=1 and create_by = '" + idUser + "'";
+        String sql = "SELECT * FROM quanlyquancafe.booking where date(create_time) = '" + date + "' and status=0 and create_by = '" + idUser + "'";
         return query(sql, new BookingMapper());
     }
 

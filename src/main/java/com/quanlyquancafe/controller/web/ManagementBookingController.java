@@ -34,7 +34,10 @@ public class ManagementBookingController extends HttpServlet {
 
         TableService tableService = new TableService();
         BookingService bookingService = new BookingService();
-        boolean idtable = tableService.updateStatusTable(Long.valueOf(listData.get(0)),0);
+        boolean idtable = false;
+        if (!listData.get(1).equals("-1")){
+           idtable = tableService.updateStatusTable(Long.valueOf(listData.get(0)),0);
+        }
         boolean idbooking =bookingService.thanhToan(Long.valueOf(listData.get(1)));
 
         boolean updateTotal = bookingService.updateTotailPrice(Math.toIntExact(Long.parseLong(listData.get(1))), Double.valueOf(listData.get(2)));

@@ -26,7 +26,7 @@ public class BillDetailDAO extends AbstractDAO<BookingSanPhamBanCustom> implemen
         String sql = "select b.id,t.name , s.tensp,bd.quantity, s.gia" +
                 " from booking b inner join booking_detail bd on b.id = bd.idbooking inner join sanpham s on bd.idsanpham=s.id" +
                 " inner join tables t on t.id = bd.idban" +
-                " where date(b.create_time) = '"+date+"' and b.status = 1 and b.create_by='"+idUser+"'" +
+                " where date(b.create_time) = '"+date+"' and b.status = 0 and b.create_by='"+idUser+"'" +
                 " order by b.id desc";
         List<BookingSanPhamBanCustom> list =  query(sql,new BookingSanPhamBanMapper());
         return list;

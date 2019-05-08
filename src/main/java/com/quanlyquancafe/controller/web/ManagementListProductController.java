@@ -22,7 +22,13 @@ public class ManagementListProductController extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         BookingService bookingService = new BookingService();
-        Long idTable = Long.parseLong(request.getParameter("idTable"));
+        Long idTable;
+        if (request.getParameter("idTable")==null){
+             idTable = -1l;
+        }else {
+             idTable = Long.parseLong(request.getParameter("idTable"));
+        }
+
         List<BookingSanPhamBanCustom> bookingSanPhamTable = bookingService.listDetailBooking(idTable);
         request.setAttribute("bookingSanPhamTable", bookingSanPhamTable);
         Double tongTien = bookingService.tongSanPham(idTable);

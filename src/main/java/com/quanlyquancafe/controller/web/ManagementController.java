@@ -27,6 +27,7 @@ public class ManagementController extends HttpServlet {
         List<TableModel> tableModelList = tableService.getAll();
         request.setAttribute("tableModels", tableModelList);
         RequestDispatcher rd = request.getRequestDispatcher("/views/web/management.jsp");
+//        RequestDispatcher rd = request.getRequestDispatcher("/common/web/header-management.jsp");
         rd.forward(request, response);
     }
 }

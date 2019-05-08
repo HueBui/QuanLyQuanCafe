@@ -32,7 +32,7 @@
                     <td style="text-align: center">${bst.gia}</td>
                     <td style="text-align: center">${bst.gia * bst.soLuong}</td>
                 </tr>
-                <input type="hidden" value="${idTable}" name="idTable" id="tableId">
+                    <input type="hidden" value="${idTable}" name="idTable" id="tableId">
                 <input type="hidden" value="${bst.id}" id="idbooking"></input>
             </c:forEach>
             </tbody>
@@ -41,7 +41,7 @@
                 <td></td>
                 <td></td>
                 <td align="center">Tổng:</td>
-                <td align="center" >${tongTien}</td>
+                <td align="center">${tongTien}</td>
                 <input type="hidden" id="totalPrice" value="${tongTien}"/>
 
             </tr>

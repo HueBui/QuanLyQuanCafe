@@ -72,9 +72,9 @@ public class AdminProductController extends HttpServlet {
             request.setAttribute("active4",active4);
 
             ProductService productService  = new ProductService();
-            String idProduct = String.valueOf(Long.parseLong(request.getParameter( "id")));
-            ProductModel menu = productService.findOne(Long.parseLong(idProduct));
-            request.setAttribute("product", menu);
+//            String idProduct = String.valueOf(Long.parseLong(request.getParameter( "id")));
+//            ProductModel menu = productService.findOne(Long.parseLong(idProduct));
+//            request.setAttribute("product", menu);
 
             String thongbao = "";
             if (msg != null && msg.equals("xoathanhcong")) {

@@ -1,18 +1,19 @@
 function order(idSanPham, idTable) {
-    var soLuong = document.getElementById("soluong_"+idSanPham).value;
+    var soLuong = document.getElementById("soluong_" + idSanPham).value;
 
-    var json = [idTable,idSanPham,soLuong];
+    var json = [idTable, idSanPham, soLuong];
+
     $.ajax({
-        url:"/booking",
-        type:"POST",
-        dataType:'json',
-        data: {json:json},
+        url: "/booking",
+        type: "POST",
+        dataType: 'json',
+        data: {json: json},
 
-        success:function(data){
+        success: function (data) {
             alert(data);
-            $("#output").append( data );
+            $("#output").append(data);
         },
-        error: function() {
+        error: function () {
             console.log('fail');   // doesn't print....
             console.log(typeof data); // prints 'undefined'
             $("#output").append('fail');
@@ -25,7 +26,7 @@ function order(idSanPham, idTable) {
 //     alert_success('1 cais gi day',3000)
 // })
 
-function alert_success(mes,time){
+function alert_success(mes, time) {
     $.toast({
         heading: 'Action success',
         text: mes,
@@ -37,7 +38,8 @@ function alert_success(mes,time){
         stack: 6
     });
 }
-function alert_fail(mes,time) {
+
+function alert_fail(mes, time) {
     $.toast({
         heading: 'Action fail',
         text: mes,
@@ -59,9 +61,9 @@ enableOrDisableDeleteAllMenu();
 
 //Xóa user
 $('#btnDeleteUser').click(function (e) {
-    var kqXoa=confirm("Bạn có chắc muốn xóa không?");
+    var kqXoa = confirm("Bạn có chắc muốn xóa không?");
     e.preventDefault();
-    if(kqXoa==true){
+    if (kqXoa == true) {
         var dataArray = $(' tbody input[type=checkbox]:checked').map(function () {
             return $(this).val();
         }).get();
@@ -90,9 +92,9 @@ $('#btnDeleteUser').click(function (e) {
 //Xóa nguyên liệu
 
 $('#btnDeleteNguyenLieu').click(function (e) {
-    var kqXoa=confirm("Bạn có chắc muốn xóa không?");
+    var kqXoa = confirm("Bạn có chắc muốn xóa không?");
     e.preventDefault();
-    if(kqXoa==true){
+    if (kqXoa == true) {
         var dataArray = $(' tbody input[type=checkbox]:checked').map(function () {
             return $(this).val();
         }).get();
@@ -119,9 +121,9 @@ $('#btnDeleteNguyenLieu').click(function (e) {
 });
 
 $('#btnDeleteMenu').click(function (e) {
-    var kqXoa=confirm("Bạn có chắc muốn xóa không?");
+    var kqXoa = confirm("Bạn có chắc muốn xóa không?");
     e.preventDefault();
-    if(kqXoa==true){
+    if (kqXoa == true) {
         var dataArray = $(' tbody input[type=checkbox]:checked').map(function () {
             return $(this).val();
         }).get();
@@ -148,9 +150,9 @@ $('#btnDeleteMenu').click(function (e) {
 });
 
 $('#btnDeleteTable').click(function (e) {
-    var kqXoa=confirm("Bạn có chắc muốn xóa không?");
+    var kqXoa = confirm("Bạn có chắc muốn xóa không?");
     e.preventDefault();
-    if(kqXoa==true){
+    if (kqXoa == true) {
         var dataArray = $(' tbody input[type=checkbox]:checked').map(function () {
             return $(this).val();
         }).get();
@@ -178,26 +180,26 @@ $('#btnDeleteTable').click(function (e) {
 
 //thanh toán
 $('#btnThanhToan').click(function (e) {
-    var kqThanhToan=confirm("Bạn có chắc thanh toán không?");
+    var kqThanhToan = confirm("Bạn có chắc thanh toán không?");
     e.preventDefault();
-    if(kqThanhToan==true){
+    if (kqThanhToan == true) {
 
         var idTable1 = document.getElementById("tableId").value;
         var idBooking1 = document.getElementById("idbooking").value;
         var totalPrice = document.getElementById("totalPrice").value;
-        var data = [idTable1, idBooking1,totalPrice];
+        var data = [idTable1, idBooking1, totalPrice];
 
         $.ajax({
-            url:"/booking-detail",
-            type:"POST",
-            dataType:'json',
-            data: {json:data},
-            success:function(data){
+            url: "/booking-detail",
+            type: "POST",
+            dataType: 'json',
+            data: {json: data},
+            success: function (data) {
                 alert(data);
-                $("#output").append( data );
+                $("#output").append(data);
                 window.location.href = "/management";
             },
-            error: function() {
+            error: function () {
                 console.log('fail');   // doesn't print....
                 console.log(typeof data); // prints 'undefined'
                 $("#output").append('fail');
@@ -246,12 +248,13 @@ function enableOrDisableDeleteAllMenu() {
         }
     });
 }
+
 function autoCheckBoxChild() {
     $('#checkAll').change(function () {
         if ((this).checked) {
             $(this).closest('table').find('tbody input[type=checkbox]').prop('checked', true);
         } else {
-            $ (this).closest('table').find('tbody input[type=checkbox]').prop('checked', false);
+            $(this).closest('table').find('tbody input[type=checkbox]').prop('checked', false);
             $('#btnDeleteUser').prop('disabled', true);
             $('#btnDeleteNguyenLieu').prop('disabled', true);
         }

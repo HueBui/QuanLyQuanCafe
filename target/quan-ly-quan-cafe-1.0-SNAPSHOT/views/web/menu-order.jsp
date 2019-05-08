@@ -51,11 +51,21 @@
                                         </th>
                                         <td>${c.tenSp}</td>
                                         <td>${c.gia}</td>
-                                        <td>${c.image}</td>
-                                        <td><input type="number" name="soluong" min="0" id="soluong_${c.id}"/></td>
-                                        <td>
-                                            <button class="btn btn-primary add_something" style="size: 10px" onclick="order(${c.id},${idTable})">Thêm</button>
+                                        <td width="100px"><c:set var="image" value="/repository/${c.image}"/>
+                                            <img src="${image}" id="viewImage" width="100px"
+                                                 height="100px" >
                                         </td>
+                                        <td width="200px" ><input type="number" name="soluong" min="0" id="soluong_${c.id}" style="margin-left:40px; margin-top:30px; width: 100px; height: 30px"/></td>
+                                        <c:if test="${idTable==null}">
+                                        <td>
+                                            <button class="btn btn-primary add_something"  onclick="order(${c.id},-1)">Thêm</button>
+                                        </td>
+                                        </c:if>
+                                        <c:if test="${idTable!=null}">
+                                            <td>
+                                                <button class="btn btn-primary add_something" style="size: 10px" onclick="order(${c.id},${idTable})">Thêm</button>
+                                            </td>
+                                        </c:if>
                                     </tr>
                                     <input type="hidden" value="${idTable}" name="idTable">
                                 </c:if>
