@@ -16,7 +16,7 @@ public class ProductMapper implements RowMapper {
             maper.setPrice(resultSet.getInt("gia"));
             maper.setName(resultSet.getString("tensp"));
         } catch (SQLException e) {
-            System.out.print(e.getMessage());
+            System.out.println("Loi mapper class: "+this.getClass() +e);
         }
         return maper;
     }

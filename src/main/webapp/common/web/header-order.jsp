@@ -89,7 +89,7 @@
                             <!-- li end -->
 
                             <li>
-                                <a class="menu-item" href="page-gallery.html">gallery</a>
+                                <a class="menu-item" href="#">gallery</a>
                             </li>
                             <!-- li end -->
 

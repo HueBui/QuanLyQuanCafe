@@ -23,7 +23,7 @@
                             <i class="fa fa-book fa-5x"></i>
                         </div>
                         <div class="col-xs-9 text-right">
-                            <div class="huge">450</div>
+                            <div class="huge">${countNguyenLieu}</div>
                             <div>Quản lý Nguyên Liệu</div>
                         </div>
                     </div>
@@ -45,12 +45,12 @@
                             <i class="fa fa-file-text fa-5x"></i>
                         </div>
                         <div class="col-xs-9 text-right">
-                            <div class="huge">15</div>
+                            <div class="huge">${countCategory}</div>
                             <div>Quản Lý Danh Mục</div>
                         </div>
                     </div>
                 </div>
-                <a href="#">
+                <a href="/admin-list-category?action=list">
                     <div class="panel-footer">
                         <span class="pull-left">Xem chi tiết...</span>
                         <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -68,7 +68,7 @@
                             <i class="fa fa-comments fa-5x"></i>
                         </div>
                         <div class="col-xs-9 text-right">
-                            <div class="huge">3</div>
+                            <div class="huge">${countProduct}</div>
                             <div>Quản lý Sản Phẩm</div>
                         </div>
                     </div>
@@ -90,7 +90,7 @@
                             <i class="fa fa-users fa-5x"></i>
                         </div>
                         <div class="col-xs-9 text-right">
-                            <div class="huge">9</div>
+                            <div class="huge">${countTable}</div>
                             <div>Quản lý Bàn</div>
                         </div>
                     </div>
@@ -118,7 +118,7 @@
                         </div>
                     </div>
                 </div>
-                <a href="/totalByDate">
+                <a href="/admin-total-by-date">
                     <div class="panel-footer">
                         <span class="pull-left">Xem chi tiết...</span>
                         <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -140,7 +140,7 @@
                         </div>
                     </div>
                 </div>
-                <a href="/admin-list-category?action=list">
+                <a href="/admin-total-by-month">
                     <div class="panel-footer">
                         <span class="pull-left">Xem chi tiết...</span>
                         <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>

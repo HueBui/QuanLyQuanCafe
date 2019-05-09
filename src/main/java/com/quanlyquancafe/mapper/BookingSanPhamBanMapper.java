@@ -16,7 +16,7 @@ public class BookingSanPhamBanMapper implements RowMapper<BookingSanPhamBanCusto
             maper.setTenSp(resultSet.getString("tensp"));
             maper.setGia(resultSet.getDouble("gia"));
         } catch (SQLException e) {
-            System.out.print(e.getMessage());
+            System.out.println("Loi mapper class: "+this.getClass() +e);
         }
         return maper;
     }

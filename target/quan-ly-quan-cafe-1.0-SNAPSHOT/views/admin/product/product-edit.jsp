@@ -5,7 +5,7 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>Quản lý nhân viên</title>
+    <title>Quản lý nguyên liêu</title>
 </head>
 <body>
 <span style="color: red">${msg}</span>

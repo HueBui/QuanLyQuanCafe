@@ -32,6 +32,8 @@ public class TotailContronller extends HttpServlet {
         request.setAttribute("tongTien", tongTien);
 
         RequestDispatcher rd = request.getRequestDispatcher("/views/web/bill-detail.jsp");
+        RequestDispatcher rdAdmin = request.getRequestDispatcher("/views/admin/total/total-by-date.jsp");
         rd.forward(request, response);
+        rdAdmin.forward(request, response);
     }
 }

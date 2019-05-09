@@ -1,5 +1,7 @@
 package com.quanlyquancafe.controller.admin;
 
+import com.quanlyquancafe.service.impl.CountService;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -36,8 +38,23 @@ public class AdminHomeController extends HttpServlet {
         else if(action != null && action.equals("statistical")){
             String active1="active";
             req.setAttribute("active1",active1);
+            CountService countService = new CountService();
+
+            Integer countTable = countService.countTable();
+            req.setAttribute("countTable",countTable);
+
+            Integer countCategory = countService.countCategory();
+            req.setAttribute("countCategory",countCategory);
+
+            Integer countProduct = countService.countProduct();
+            req.setAttribute("countProduct",countProduct);
+
+            Integer countNguyenLieu = countService.countNguyenLieu();
+            req.setAttribute("countNguyenLieu",countNguyenLieu);
+
             String pageTitle="Thống Kê";
             req.setAttribute("pageTitle",pageTitle);
+
             RequestDispatcher rd = req.getRequestDispatcher("/views/admin/thong-ke.jsp");
             rd.forward(req, resp);
         }

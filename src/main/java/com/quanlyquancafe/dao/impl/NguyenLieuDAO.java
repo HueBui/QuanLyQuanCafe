@@ -1,10 +1,13 @@
 package com.quanlyquancafe.dao.impl;
 
 import com.quanlyquancafe.dao.INguyenLieuDAO;
+import com.quanlyquancafe.mapper.CategoryMapper;
+import com.quanlyquancafe.mapper.CountMapper;
 import com.quanlyquancafe.mapper.NguyenLieuMapper;
 import com.quanlyquancafe.mapper.SanPhamNguyenLieuKhoiLuongMapper;
 import com.quanlyquancafe.model.CategoryModel;
 import com.quanlyquancafe.model.NguyenLieuModel;
+import com.quanlyquancafe.model.custom.CountCustom;
 import com.quanlyquancafe.model.custom.SanPhamNguyenLieuCongThucCustom;
 
 import java.util.List;
@@ -61,5 +64,10 @@ public class NguyenLieuDAO extends AbstractDAO<NguyenLieuModel> implements INguy
         String sql = "SELECT * FROM nguyenlieu WHERE id = ?";
         List<NguyenLieuModel> nguyenLieuModels = query(sql, new NguyenLieuMapper(), id);
         return nguyenLieuModels.isEmpty() ? null : nguyenLieuModels.get(0);
+    }
+
+    public List<CountCustom> count() {
+        String sql = "SELECT count(*) as count FROM nguyenlieu";
+        return query(sql,new CountMapper());
     }
 }

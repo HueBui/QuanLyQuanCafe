@@ -12,7 +12,7 @@ public class SanPhamNguyenLieuKhoiLuongMapper implements RowMapper<SanPhamNguyen
             model.setKhoiLuongCongThuc(resultSet.getDouble("khoiluong"));
             model.setKhoiLuongNguyenLieu(resultSet.getDouble("quantity"));
         }catch (Exception e){
-            System.out.println("Loi"+e);
+            System.out.println("Loi mapper class: "+this.getClass() +e);
         }
         return model;
     }

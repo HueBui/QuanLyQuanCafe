@@ -89,9 +89,9 @@ public class AdminTableController extends HttpServlet {
         ObjectMapper mapper = new ObjectMapper();
         req.setCharacterEncoding("UTF-8");
         resp.setContentType("application/json");
-        TableModel tableModel = HttpUtil.of(req.getReader()).toModel(TableModel.class);
-        TableService tableService = new TableService();
-        tableService.delete(tableModel.getIds());
+        TableModel categoryModel = HttpUtil.of(req.getReader()).toModel(TableModel.class);
+        TableService categoryService = new TableService();
+        categoryService.delete(categoryModel.getIds());
         mapper.writeValue(resp.getOutputStream(), "{}");
     }
 }

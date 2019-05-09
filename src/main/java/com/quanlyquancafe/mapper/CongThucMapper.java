@@ -13,7 +13,7 @@ public class CongThucMapper implements RowMapper<CongThucModel> {
             congThucModel.setIdSanPham(resultSet.getLong("idsanpham"));
             congThucModel.setKhoiLuong(resultSet.getDouble("khoiluong"));
         }catch (Exception e){
-            System.out.println("Loi "+e);
+            System.out.println("Loi mapper class: "+this.getClass() +e);
         }
         return congThucModel;
     }

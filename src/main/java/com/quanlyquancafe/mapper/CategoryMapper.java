@@ -14,7 +14,7 @@ public class CategoryMapper implements RowMapper{
             maper.setImage(resultSet.getString("image"));
             maper.setType(resultSet.getString("type"));
         } catch (SQLException e) {
-            System.out.print(e.getMessage());
+            System.out.println("Loi mapper class: "+this.getClass() +e);
         }
         return maper;
     }

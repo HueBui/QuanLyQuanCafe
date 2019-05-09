@@ -20,7 +20,7 @@ public class BookingDetailMapper implements RowMapper<BookingDetailModel> {
             model.setGia(resultSet.getInt("price"));
 
         }catch (Exception e){
-            System.out.println("Loi"+e);
+            System.out.println("Loi mapper class: "+this.getClass() +e);
         }
         return model;
     }

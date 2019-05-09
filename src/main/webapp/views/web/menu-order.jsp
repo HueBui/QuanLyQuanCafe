@@ -18,10 +18,10 @@
                     <h4 class="panel-title">
                         <button class="btn btn-link collapsed" type="button" data-toggle="collapse"
                                 data-target="#collapse1_${s.id}"
-                                style="background-color: red; color: white; text-align: center;width: 100%"
+                                style="font-family: initial;font-size: 18px; background-color: #CC3300; color: white; text-align: center; width: 100%"
                                 aria-expanded="false" aria-controls="collapse1_${s.id}"
                                 data-parent="#accordion">
-                                ${s.type}
+                               <b>${s.type}</b>
                         </button>
                     </h4>
                 </div>
@@ -32,11 +32,12 @@
                             <tr>
                                 <th scope="col" style="width: 40px"><input type="checkbox" style="zoom:1.8;"/></th>
                                 <th scope="col" style="width: 40px"><input type="hidden" style="zoom:1.8;"/></th>
-                                <th scope="col" style="text-align: center">Tên</th>
-                                <th scope="col" style="text-align: center">Giá</th>
-                                <th scope="col" style="text-align: center">Hình ảnh</th>
-                                <th scope="col" style="text-align: center">Số lượng</th>
-                                <th scope="col" style="text-align: center">Hành động</th>
+                                <th scope="col" style="text-align: center;font-family: initial; font-size: 20px;color: #000000 ">Tên Sản Phẩm
+                                </th>
+                                <th scope="col" style="font-family: initial; font-size: 20px;color: #000000; text-align: center">Giá</th>
+                                <th scope="col" style="text-align: center;font-family: initial; font-size: 20px;color: #000000">Hình ảnh</th>
+                                <th scope="col" style="text-align: center;font-family: initial; font-size: 20px;color: #000000">Số lượng</th>
+                                <th scope="col" style="text-align: center;font-family: initial; font-size: 20px;color: #000000">Hành động</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -49,21 +50,28 @@
                                                                                    value="${c.id}" id="sanpham_${c.id}"
                                                                                    name="idSanPham"/>
                                         </th>
-                                        <td>${c.tenSp}</td>
-                                        <td>${c.gia}</td>
+                                        <td style=" font-family: initial; font-size: 18px;color: #000000">${c.tenSp}</td>
+                                        <td style=" font-family: initial; font-size: 18px;color: #000000">${c.gia}</td>
                                         <td width="100px"><c:set var="image" value="/repository/${c.image}"/>
                                             <img src="${image}" id="viewImage" width="100px"
-                                                 height="100px" >
+                                                 height="100px">
                                         </td>
-                                        <td width="200px" ><input type="number" name="soluong" min="0" id="soluong_${c.id}" style="margin-left:40px; margin-top:30px; width: 100px; height: 30px"/></td>
+                                        <td width="200px"><input type="number" name="soluong" min="0"
+                                                                 id="soluong_${c.id}"
+                                                                 style="margin-left:40px; margin-top:30px; width: 100px; height: 30px"/>
+                                        </td>
                                         <c:if test="${idTable==null}">
-                                        <td>
-                                            <button class="btn btn-primary add_something"  onclick="order(${c.id},-1)">Thêm</button>
-                                        </td>
+                                            <td>
+                                                <button class="btn btn-primary add_something"
+                                                        onclick="order(${c.id},-1)">Thêm
+                                                </button>
+                                            </td>
                                         </c:if>
                                         <c:if test="${idTable!=null}">
                                             <td>
-                                                <button class="btn btn-primary add_something" style="size: 10px" onclick="order(${c.id},${idTable})">Thêm</button>
+                                                <button class="btn btn-primary add_something" style="border-radius: 30px"
+                                                        onclick="order(${c.id},${idTable})">Thêm
+                                                </button>
                                             </td>
                                         </c:if>
                                     </tr>

@@ -12,7 +12,7 @@ public class BookingTableMapper implements RowMapper<BookingTableCustom> {
             bookingTableCustom.setIdTable(resultSet.getLong("id"));
             bookingTableCustom.setNameTable(resultSet.getString("name"));
         }catch (Exception e){
-           e.printStackTrace();
+            System.out.println("Loi mapper class: "+this.getClass() +e);
         }
         return bookingTableCustom;
     }

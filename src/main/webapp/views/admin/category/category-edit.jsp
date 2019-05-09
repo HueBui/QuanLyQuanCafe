@@ -19,7 +19,7 @@
 
             <div class="form-group">
                 <label>Image</label>
-                <input type="file" name="image" id="uploadImage" class="form-control">
+                <input type="file" name="images" id="uploadImage" class="form-control" value="${categoryModel.image}">
             </div>
             <div class="form-group">
                 <c:if test="${categoryModel==null}">

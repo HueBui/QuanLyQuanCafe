@@ -12,20 +12,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.sql.Timestamp;
 import java.util.List;
 
 @WebServlet(urlPatterns = {"/admin-list-category", "/admin-edit-category"})
 public class AdminCategoryController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
         CategoryService service = new CategoryService();
         String action = request.getParameter("action");
 
-        CategoryModel categoryModel = new CategoryModel();
-        categoryModel.setImage(request.getParameter("image"));
-        categoryModel.setType(request.getParameter("type"));
 
         if (action != null && action.equals("themdanhmuc")) {
+            CategoryModel categoryModel = new CategoryModel();
+            categoryModel.setImage(request.getParameter("images"));
+            categoryModel.setType(request.getParameter("type"));
 
             Long result = service.saveCategory(categoryModel);
             if (result != null) {
@@ -37,7 +37,12 @@ public class AdminCategoryController extends HttpServlet {
             RequestDispatcher rd = request.getRequestDispatcher("/views/admin/category/category-edit.jsp");
             rd.forward(request, response);
         } else if (action != null && action.equals("suadanhmuc")) {
+            CategoryModel categoryModel = new CategoryModel();
+            categoryModel.setImage(request.getParameter("images"));
+            categoryModel.setType(request.getParameter("type"));
+
             categoryModel.setId(Long.parseLong(request.getParameter("id")));
+
             if (service.update(categoryModel) == true) {
                 request.setAttribute("msg", "Sửa thành công!");
                 RequestDispatcher rd = request.getRequestDispatcher("/views/admin/category/category-edit.jsp");
@@ -54,11 +59,12 @@ public class AdminCategoryController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         CategoryService service = new CategoryService();
         String action = request.getParameter("action");
-        String active6 = "active";
-        request.setAttribute("active6", active6);
+        String active2 = "active";
+        request.setAttribute("active6", active2);
         if (action != null && action.equals("list")) {
             List<CategoryModel> categoryModels = service.getAll();
             String msg = request.getParameter("msg");
+            request.setAttribute("categoryModels", categoryModels);
             request.setAttribute("categoryModels", categoryModels);
             String thongbao = "";
             if (msg != null && msg.equals("xoathanhcong")) {
@@ -70,17 +76,17 @@ public class AdminCategoryController extends HttpServlet {
             RequestDispatcher rd = request.getRequestDispatcher("/views/admin/category/category-list.jsp");
             rd.forward(request, response);
         } else if (action != null && action.equals("edit")) {
-            String categoryId = request.getParameter("id");
+            String categoryId = request.getParameter("categoryId");
             if (categoryId != null) {
-                CategoryService userService = new CategoryService();
-                CategoryModel categoryModel = userService.findOne((Long.parseLong(categoryId)));
+                CategoryService categoryService = new CategoryService();
+                CategoryModel categoryModel = categoryService.findOne((Long.parseLong(categoryId)));
                 request.setAttribute("categoryModel", categoryModel);
             }
             response.setContentType("text/html");
             RequestDispatcher rd = request.getRequestDispatcher("/views/admin/category/category-edit.jsp");
             rd.forward(request, response);
         } else {
-            response.sendRedirect("/admin-edit-category?action=list");
+            response.sendRedirect("/admin-edit-account?action=list");
         }
     }
 

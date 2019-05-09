@@ -9,8 +9,8 @@ import java.sql.SQLException;
 public class TableMapper implements RowMapper<TableModel> {
     @Override
     public TableModel mapRow(ResultSet resultSet) {
+        TableModel table = new TableModel();
         try {
-            TableModel table = new TableModel();
             table.setId(resultSet.getLong("id"));
             table.setName(resultSet.getString("name"));
             table.setGhiChu(resultSet.getString("ghichu"));
@@ -18,9 +18,10 @@ public class TableMapper implements RowMapper<TableModel> {
             table.setStatus(resultSet.getLong("status"));
             table.setSoLuongGhe(resultSet.getLong("soluongghe"));
             table.setImage(resultSet.getString("image"));
-            return table;
+
         } catch (SQLException e) {
-            return null;
+            System.out.println("Loi mapper class: "+this.getClass() +e);
         }
+        return table;
     }
 }

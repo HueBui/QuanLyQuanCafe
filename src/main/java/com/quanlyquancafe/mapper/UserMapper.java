@@ -27,7 +27,7 @@ public class UserMapper implements RowMapper<UserModel> {
                 role.setName(resultSet.getString("name"));
                 user.setRole(role);
             } catch (Exception e) {
-                System.out.print(e.getMessage());
+                System.out.println("Loi mapper class: "+this.getClass() +e);
             }
             return user;
         } catch (SQLException e) {

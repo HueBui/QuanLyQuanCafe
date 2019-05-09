@@ -2,9 +2,12 @@ package com.quanlyquancafe.dao.impl;
 
 import com.quanlyquancafe.dao.ITableDAO;
 import com.quanlyquancafe.mapper.BookingTableMapper;
+import com.quanlyquancafe.mapper.CategoryMapper;
+import com.quanlyquancafe.mapper.CountMapper;
 import com.quanlyquancafe.mapper.TableMapper;
 import com.quanlyquancafe.model.TableModel;
 import com.quanlyquancafe.model.custom.BookingTableCustom;
+import com.quanlyquancafe.model.custom.CountCustom;
 
 import java.util.List;
 
@@ -37,13 +40,12 @@ public class TableDAO extends AbstractDAO<TableModel> implements ITableDAO {
 
         return update(sql.toString(), tableModel.getName(), tableModel.getTypeTable(), tableModel.getSoLuongGhe(),
                 tableModel.getStatus(), tableModel.getGhiChu(), tableModel.getImage(), tableModel.getId());
-
     }
 
     @Override
     public void delete(Long id) {
         String sql = "DELETE FROM tables WHERE id = ?";
-        delete(id);
+        update(sql,id);
     }
 
     @Override
@@ -57,5 +59,10 @@ public class TableDAO extends AbstractDAO<TableModel> implements ITableDAO {
     public boolean updateTableStatus(Long idTable, Integer status) {
         String sql = "update tables t set t.status='" + status + "' where t.id='" + idTable + "'";
         return update(sql, idTable);
+    }
+
+    public List<CountCustom> count() {
+        String sql = "SELECT count(*) as count FROM tables";
+        return query(sql,new CountMapper());
     }
 }

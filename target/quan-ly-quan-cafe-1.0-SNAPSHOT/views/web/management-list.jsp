@@ -13,11 +13,11 @@
         <table class="table table-striped" border="1">
             <thead>
             <tr>
-                <th scope="col" style="text-align: center">STT</th>
-                <th scope="col" style="text-align: center">Tên Sản Phẩm</th>
-                <th scope="col" style="text-align: center">Số Lượng</th>
-                <th scope="col" style="text-align: center">Đơn Giá</th>
-                <th scope="col" style="text-align: center">Tổng Tiền</th>
+                <th scope="col" style="font-size: 17px;color: black;font-style: inherit;text-align: center">STT</th>
+                <th scope="col" style="font-size: 17px;color: black;font-style: inherit;text-align: center">Tên Sản Phẩm</th>
+                <th scope="col" style="font-size: 17px;color: black;font-style: inherit;text-align: center">Số Lượng</th>
+                <th scope="col" style="font-size: 17px;color: black;font-style: inherit;text-align: center">Đơn Giá</th>
+                <th scope="col" style="font-size: 17px;color: black;font-style: inherit;text-align: center">Tổng Tiền</th>
 
             </tr>
             </thead>
@@ -25,12 +25,12 @@
             <c:forEach var="bst" items="${bookingSanPhamTable}" varStatus="loop">
 
                 <tr>
-                    <th style="text-align: center">${loop.index+1}</th>
+                    <th style="font-size: 17px;color: black;font-style: inherit;text-align: center">${loop.index+1}</th>
                     </th>
-                    <td>${bst.tenSp}</td>
-                    <td style="text-align: center">${bst.soLuong}</td>
-                    <td style="text-align: center">${bst.gia}</td>
-                    <td style="text-align: center">${bst.gia * bst.soLuong}</td>
+                    <td style="font-size: 17px;color: black;font-style: inherit;">${bst.tenSp}</td>
+                    <td style="font-size: 17px;color: black;font-style: inherit;text-align: center">${bst.soLuong}</td>
+                    <td style="font-size: 17px;color: black;font-style: inherit;text-align: center">${bst.gia}</td>
+                    <td style="font-size: 17px;color: black;font-style: inherit;text-align: center">${bst.gia * bst.soLuong}</td>
                 </tr>
                     <input type="hidden" value="${idTable}" name="idTable" id="tableId">
                 <input type="hidden" value="${bst.id}" id="idbooking"></input>
@@ -40,13 +40,13 @@
                 <td></td>
                 <td></td>
                 <td></td>
-                <td align="center">Tổng:</td>
-                <td align="center">${tongTien}</td>
+                <td align="center" style="font-size: 17px;color: black;font-style: inherit;">Tổng:</td>
+                <td align="center" style="font-size: 17px;color: black;font-style: inherit;">${tongTien}</td>
                 <input type="hidden" id="totalPrice" value="${tongTien}"/>
 
             </tr>
         </table>
-        <button type="button" class="btn btn-success" id="btnThanhToan">Thanh Toán</button>
+        <button type="button" class="btn btn-success" id="btnThanhToan" style="border-radius: 35px">Thanh Toán</button>
 
     </div>
 </section>

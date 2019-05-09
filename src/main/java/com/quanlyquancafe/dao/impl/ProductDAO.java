@@ -1,9 +1,12 @@
 package com.quanlyquancafe.dao.impl;
 
 import com.quanlyquancafe.dao.IProductDAO;
+import com.quanlyquancafe.mapper.CategoryMapper;
+import com.quanlyquancafe.mapper.CountMapper;
 import com.quanlyquancafe.mapper.ProductCategoryMapper;
 import com.quanlyquancafe.mapper.ProductMapper;
 import com.quanlyquancafe.model.ProductModel;
+import com.quanlyquancafe.model.custom.CountCustom;
 import com.quanlyquancafe.model.custom.ProductCategoryCustom;
 
 import java.util.List;
@@ -53,5 +56,10 @@ public class ProductDAO extends AbstractDAO<ProductCategoryCustom> implements IP
         String sql="select * from sanpham where id=?";
         List<ProductModel> productModels = query(sql, new ProductMapper(), id);
         return productModels.isEmpty() ? null : productModels.get(0);
+    }
+
+    public List<CountCustom> count() {
+        String sql = "SELECT count(*) as count FROM sanpham";
+        return query(sql,new CountMapper());
     }
 }

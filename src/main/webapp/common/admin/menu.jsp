@@ -44,11 +44,17 @@
             </li>
             <li class="${active6}">
                 <a href='<c:url value="/admin-list-category?action=list"/>'>
-                    <i class="ti-pencil-alt2"></i>
+                    <i class="ti-view-list-alt"></i>
                     <p>Quản Lý Danh Mục</p>
                 </a>
             </li>
             <li class="${active7}">
+                <a href='<c:url value="/admin-list-recipe?action=list"/> '>
+                    <i class="ti-view-list-alt"></i>
+                    <p>Quản Lý Công Thức</p>
+                </a>
+            </li>
+            <li class="${active8}">
                 <a href='<c:url value="/admin-home?action=nottification"/> '>
                     <i class="ti-bell"></i>
                     <p>Thông Báo</p>

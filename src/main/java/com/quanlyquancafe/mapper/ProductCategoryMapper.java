@@ -17,7 +17,7 @@ public class ProductCategoryMapper implements RowMapper<ProductCategoryCustom> {
             menuModel.setType(resultSet.getString("type"));
             menuModel.setIdCategory(resultSet.getLong("idcategory"));
         } catch (SQLException e) {
-            System.out.print(e.getMessage());
+            System.out.println("Loi mapper class: "+this.getClass() +e);
         }
 
         return menuModel;
