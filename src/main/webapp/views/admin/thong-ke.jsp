@@ -140,7 +140,7 @@
                         </div>
                     </div>
                 </div>
-                <a href="/admin-total-by-month">
+                <a href="/admin-chart-price">
                     <div class="panel-footer">
                         <span class="pull-left">Xem chi tiết...</span>
                         <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>

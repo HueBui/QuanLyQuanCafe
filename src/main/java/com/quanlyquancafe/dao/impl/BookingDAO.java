@@ -69,5 +69,8 @@ public class BookingDAO extends AbstractDAO<BookingDetailModel> implements IBook
         String sql = "update booking b set b.total='"+totalPrice+"' where b.id='"+idBooking+"'";
         return update(sql);
     }
-
+    public List<BookingModel> listTuNgay(String dateFrom, String dateTo) {
+        String sql = "SELECT * FROM booking b where date(b.create_time) >= '" + dateFrom + "' AND  date(b.create_time) <= date('" + dateTo + "')";
+        return query(sql,new BookingMapper());
+    }
 }

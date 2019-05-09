@@ -164,4 +164,8 @@ public class BookingService implements IBookingService {
         return tong;
     }
 
+    public List<BookingModel> listbookingbydate(String dateFrom, String dateTo) {
+        BookingDAO bookingDAO = new BookingDAO();
+        return bookingDAO.listTuNgay(dateFrom,dateTo);
+    }
 }
